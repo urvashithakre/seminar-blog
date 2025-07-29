@@ -181,7 +181,7 @@ They performed a comparison using three datasets:
 
 Each sequence was searched against the Uniclust30 database to find the best-matching natural counterpart. 
 
-![](../images/Sequence_Identities.jpg)
+![](images/Sequence_Identities.jpg)
 <div style="text-align: center;">Figure 4: Pairwise sequence identities vs. alignment length for each of the datasets </div>
 
 
@@ -212,7 +212,7 @@ To understand how well ProtGPT2’s sequences fold, researchers used AlphaFold, 
 
 This means ProtGPT2 is not simply generating arbitrary strings—it’s producing sequences that AlphaFold believes can fold into well-structured proteins.
 
-![](<../images/Rosetta vs MD.jpg>)
+![](images/Rosetta vs MD.jpg)
 <div style="text-align: center;">Figure 4: **a** Average Rosetta energy units per residue for the three datasets. **b** Root mean square deviation (RMSD) distribution for each MD dataset as computed by averaging RMSDs independently for each trajectory, represented as a boxplot.  </div>
 
 To further confirm stability, the Rosetta Relax protocol was applied, simulating how these proteins would minimize energy to find their most stable forms. As seen in Figure 3a, both ProtGPT2 and natural sequences showed favorable energy scores (−1.90 and −1.73 REU/residue, respectively), while random sequences were significantly less stable (0.13 REU/residue). This underscores that ProtGPT2’s proteins are thermodynamically plausible.
