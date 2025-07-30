@@ -1,6 +1,6 @@
 ---
 permalink: /
-#title: "ProtGPT2 - A deep unsupervised language model for protein design"
+title: "ProtGPT2 - A deep unsupervised language model for protein design"
 author_profile: true
 redirect_from: 
   - /about/
