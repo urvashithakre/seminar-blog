@@ -53,6 +53,8 @@ The rise of Transformer architectures introduced a shift toward unsupervised lea
 | **ProtTrans** | BERT & T5 mix | Multi-task protein NLP       |
 | **ESM**       | Transformer   | Large-scale protein modeling |
 
+<div style="text-align: center;"><strong>Table 1. </strong> Overview of unsupervised language models applied to protein sequences.</div>
+
 Typically, masked language modelling was used to train these models, in which specific tokens are concealed and the model is trained to reconstruct them. They were not optimised for generation, but they worked well for embedding sequences.
 
 ### 3.3 Autoregressive Models for Protein Generation
