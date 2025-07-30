@@ -254,7 +254,7 @@ This means ProtGPT2 is not simply generating arbitrary strings—it’s producin
 
 ![](images/Rosetta vs MD.jpg)
 <div style="text-align: center;"><strong>Figure 7.</strong><b> a.</b> Average Rosetta energy units per residue for the three datasets. <b>b.</b> Root mean square deviation (RMSD) distribution for each MD dataset as computed by averaging RMSDs independently for each trajectory, represented as a boxplot. </div>
-
+<br>
 To further confirm stability, the Rosetta Relax protocol was applied, simulating how these proteins would minimize energy to find their most stable forms. As seen in Figure 3a, both ProtGPT2 and natural sequences showed favorable energy scores (−1.90 and −1.73 REU/residue, respectively), while random sequences were significantly less stable (0.13 REU/residue). This underscores that ProtGPT2’s proteins are thermodynamically plausible.
 
 ### 7.2  Structural Flexibility: Are ProtGPT2 Proteins Dynamic?
@@ -277,7 +277,7 @@ Edges in the network were formed based on alignment similarity, allowing visuali
 ![](<images/Protein_Space.jpg>)
 <div style="text-align: center;"><b>Figure 8.</b> Network of structural relationships between ProtGPT2-generated and natural proteins. Each dot represents a protein. White nodes are ProtGPT2 sequences connected to known structural classes. </div>
 
-Key highlights:
+<b>Key highlights:</b>
 - The combined network had 59,612 nodes and over 427,000 edges.
 - Over 50% of nodes clustered in one large component — with ProtGPT2 sequences often acting as bridges between disconnected islands in the structural landscape.
 - Six diverse proteins were selected to visualize ProtGPT2’s reach into multiple SCOP classes: all-α, all-β, α/β, α+β, membrane proteins and small proteins.
