@@ -139,9 +139,9 @@ Once we’ve trained our model, we need to decide how to generate sequences from
 | **Beam Search**    | Maintains multiple candidate sequences and picks the best-scoring one | Slightly better but still repetitive |
 | **Random (Top-k)** | Samples from top-k probable tokens randomly                           | Diverse and biologically realistic   |
 
-<p align="center">
-  <img src="images/Sampling_Strategies.png" alt="Sampling Strategies" width="60%">
-</p>
+<center>
+  <img src="images/sampling_strategies.png" alt="Sampling Strategies" width="60%">
+</center>
 
 ### Best Strategy?
 The authors found that Top-k sampling (k = 950) combined with a repetition penalty of 1.2 yields the best results.
