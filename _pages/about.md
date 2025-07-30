@@ -114,14 +114,15 @@ This strategy reduces sequence length, improves generalization and helps the mod
 
 ### 4.4 Final Model Configuration
 
-| Component   | Description                        |
-|-------------|------------------------------------|
+| Component    | Description                       |
+|------------- |-----------------------------------|
 | Architecture | GPT-2 large (decoder-only)        |
 | Layers       | 36                                |
 | Parameters   | 738 million                       |
 | Batch Size   | 65,536 tokens per batch           |
 | Optimizer    | Adam (β₁ = 0.9, β₂ = 0.999)       |
 | Hardware     | 128 NVIDIA A100 GPUs for 4 days   |
+
 <div style="text-align: center;">Model configuration</div>
 
 Unlike masked models focused on classification or embedding, ProtGPT2 was explicitly trained for sequence generation, enabling it to compose entirely new proteins that closely resemble natural ones. To summarize, ProtGPT2 combines a powerful GPT-2 architecture with a massive protein sequence corpus (UniRef50) and a subword-aware BPE tokenizer. Together, these components enable the model to learn the underlying "language" of proteins and generate new sequences that reflect natural structural and functional properties.
@@ -144,7 +145,6 @@ Here are the primary decoding strategies explored:
 | **Random (Top-k)** | Samples from top-k probable tokens randomly                           | Diverse and biologically realistic   |
 
 <div style="text-align: center;">Comparison of Greedy, Beam, and Top‑k sampling strategies</div>
-
 
 Here's a visual representation of how these 3 strategies work.
 
