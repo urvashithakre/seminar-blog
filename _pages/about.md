@@ -140,7 +140,7 @@ Once we’ve trained our model, we need to decide how to generate sequences from
 | **Random (Top-k)** | Samples from top-k probable tokens randomly                           | Diverse and biologically realistic   |
 
 <center>
-  <img src="images/sampling_strategies.png" alt="Sampling Strategies" width="60%">
+  <img src="images/Sampling_Strategies.png" alt="Sampling Strategies" width="60%">
 </center>
 
 ### Best Strategy?
