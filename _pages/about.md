@@ -6,6 +6,11 @@ redirect_from:
   - /about/
   - /about.html
 ---
+<script type="text/javascript"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 <style>
 p {
     text-align: justify;
@@ -64,11 +69,12 @@ Key autoregressive protein models prior to ProtGPT2 include:
 
 Building on recent advances in language modeling, ProtGPT2 represents a powerful leap in applying deep learning to protein design. ProtGPT2 is an autoregressive Transformer model with 738 million parameters, based on the GPT-2 architecture. That means it generates outputs sequentially, one token at a time, conditioned only on what came before - perfect for modeling protein sequences. 
 
-Given a protein sequence, $W = \{ w_1, w_2, \dots, w_n \}$, the model learns to predict the probability of each amino acid conditioned on its preceding tokens:
+Given a protein sequence, \( W = \{ w_1, w_2, \dots, w_n \} \), the model learns to predict the probability of each amino acid conditioned on its preceding tokens:
 
-$$
+
+\[
 p(W) = \prod_{i=1}^{n} p(w_i \mid w_{<i})
-$$
+\]
 
 The training process minimizes the **negative log-likelihood** over all protein sequences in the dataset:
 
@@ -78,14 +84,14 @@ $$
 
 Where:
 
-- $w_{k,i}$: *i*-th amino acid in the *k*-th protein sequence  
-- $D$: protein dataset (UniRef50)  
-- $\theta$: model parameters  
-- $L_{\text{CLM}}$: Causal Language Modeling loss
+- \( w_{k,i} \): *i*-th amino acid in the *k*-th protein sequence  
+- \( D \): protein dataset (UniRef50)  
+- \( \theta \): model parameters  
+- \( L_{\text{CLM}} \): Causal Language Modeling loss
 
 This formulation allows ProtGPT2 to learn complex statistical dependencies — such as conserved motifs and structural sub-patterns — directly from sequence data.
 
-## 4.2 The Dataset
+### 4.2 The Dataset
 ProtGPT2 was trained on UniRef50 (version 2021_04) — a clustered version of UniProt with 50% sequence identity, which ensures a balance between diversity and redundancy reduction.
 
 | Subset       | Sequences           |
@@ -95,7 +101,7 @@ ProtGPT2 was trained on UniRef50 (version 2021_04) — a clustered version of Un
 
 This dataset spans both known and “dark” proteome regions — sequences with no known structure or function — enabling the model to generalize across a vast protein landscape.
 
-## 4.3 Byte Pair Encoding (BPE) for Tokenization
+### 4.3 Byte Pair Encoding (BPE) for Tokenization
 Rather than treating each amino acid as a separate token, ProtGPT2 uses a Byte Pair Encoding (BPE) tokenizer — a subword algorithm that learns common amino acid motifs and folds them into reusable building blocks.
 
 - Vocabulary size: 50,256 tokens
