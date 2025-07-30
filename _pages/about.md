@@ -78,8 +78,8 @@ $$
 
 Where:
 - $$w_{k,i}$$: *i*-th amino acid in the *k*-th protein sequence  
-- $$D$$: protein dataset (UniRef50)  
-- $$\theta$$: model parameters  
+- $$D$$: Protein dataset (UniRef50)  
+- $$\theta$$: Model parameters  
 - $$\mathcal{L}_{\text{CLM}}$$: Causal Language Modeling loss
 
 This formulation allows ProtGPT2 to learn complex statistical dependencies — such as conserved motifs and structural sub-patterns — directly from sequence data.
@@ -131,6 +131,7 @@ Once we’ve trained our model, we need to decide how to generate sequences from
 | **Random (Top-k)** | Samples from top-k probable tokens randomly                           | Diverse and biologically realistic   |
 
 ![](images/Sampling_Strategies.png)
+<img src="images/sampling_strategies.png" alt="Sampling Strategies" width="70%" style="display: block; margin: auto;" />
 
 ### Best Strategy?
 The authors found that Top-k sampling (k = 950) combined with a repetition penalty of 1.2 yields the best results.
