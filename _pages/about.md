@@ -25,8 +25,9 @@ Recent breakthroughs in Natural Language Processing (NLP) have demonstrated that
 
 Interestingly, proteins share a surprisingly similar structure to natural language. Proteins are linear chains of amino acids drawn from a 20-character chemical alphabet. Like natural languages, protein sequences are information-complete, storing structure and functioning completely in the order of their amino acids with remarkable efficiency. Amino acids form structured domains that fold into functional proteins, much like words use grammar to form sentences. As a result of this analogy, protein sequences are now thought of as a type of language in which structure and function are determined by sequence.
 
-![](images/img1.png)
-<div style="text-align: center;">Figure 1:  Structural Analogy Between Protein Sequences and Natural Language </div>
+<center>
+  <img src="images/img1.png" alt="Figure 1:  Structural Analogy Between Protein Sequences and Natural Language" width="70%">
+</center>
 
 ## 3. Previous Work
 Before ProtGPT2, several models laid the groundwork for applying NLP techniques to biological sequences. These studies demonstrated that proteins when treated like language can be analyzed and even generated using the same tools that revolutionized text processing.
