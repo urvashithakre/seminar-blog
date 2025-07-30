@@ -27,6 +27,7 @@ Interestingly, proteins share a surprisingly similar structure to natural langua
 
 <center>
   <img src="images/img1.png" alt="Figure 1:  Structural Analogy Between Protein Sequences and Natural Language" width="70%">
+  <div><strong>Figure 1.</strong> Structural Analogy Between Protein Sequences and Natural Language</div>
 </center>
 
 ## 3. Previous Work
@@ -102,6 +103,8 @@ ProtGPT2 was trained on UniRef50 (version 2021_04) — a clustered subset of Uni
 | Training Set | \~44.9 million      |
 | Validation   | \~4.9 million (10%) |
 
+<div style="text-align: center;"><strong>Table 1. </strong> Composition of the UniRef50 dataset used to train ProtGPT2.</div>
+
 This dataset spans both known and “dark” proteome regions — proteins without known structure or function, enabling ProtGPT2 to generalize across structured and unexplored sequence space.
 
 ### 4.3 Byte Pair Encoding (BPE) for Tokenization
@@ -125,8 +128,8 @@ This strategy reduces sequence length, improves generalization and helps the mod
 | Optimizer    | Adam (β₁ = 0.9, β₂ = 0.999)       |
 | Hardware     | 128 NVIDIA A100 GPUs for 4 days   |
 
-<div style="text-align: center;">Table 2. Model configuration</div>
-
+<div style="text-align: center;"><strong>Table 2.</strong> Model configuration</div>
+<br><br>
 Unlike masked models focused on classification or embedding, ProtGPT2 was explicitly trained for sequence generation, enabling it to compose entirely new proteins that closely resemble natural ones. To summarize, ProtGPT2 combines a powerful GPT-2 architecture with a massive protein sequence corpus (UniRef50) and a subword-aware BPE tokenizer. These elements work together to give the model the ability to understand the underlying "language" of proteins and produce new sequences that accurately represent their structural and functional characteristics.
 
 ![](images/ProtGPT_Architecture.png)
