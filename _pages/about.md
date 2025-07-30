@@ -69,12 +69,12 @@ Key autoregressive protein models prior to ProtGPT2 include:
 
 Building on recent advances in language modeling, ProtGPT2 represents a powerful leap in applying deep learning to protein design. ProtGPT2 is an autoregressive Transformer model with 738 million parameters, based on the GPT-2 architecture. That means it generates outputs sequentially, one token at a time, conditioned only on what came before - perfect for modeling protein sequences. 
 
-Given a protein sequence, \( W = \{ w_1, w_2, \dots, w_n \} \), the model learns to predict the probability of each amino acid conditioned on its preceding tokens:
+Given a protein sequence, $$ W = \{ w_1, w_2, \dots, w_n \} $$, the model learns to predict the probability of each amino acid conditioned on its preceding tokens:
 
 
-\[
+$$
 p(W) = \prod_{i=1}^{n} p(w_i \mid w_{<i})
-\]
+$$
 
 The training process minimizes the **negative log-likelihood** over all protein sequences in the dataset:
 
@@ -84,10 +84,10 @@ $$
 
 Where:
 
-- \( w_{k,i} \): *i*-th amino acid in the *k*-th protein sequence  
-- \( D \): protein dataset (UniRef50)  
-- \( \theta \): model parameters  
-- \( L_{\text{CLM}} \): Causal Language Modeling loss
+- $$ w_{k,i} \text{ — the } i\text{-th amino acid in the } k\text{-th protein sequence} $$
+- $$ D \text{ — the protein dataset (UniRef50)}$$
+- $$ \theta \text{ — model parameters} $$
+- $$ L_{\text{CLM}} \text{ — Causal Language Modeling loss} $$
 
 This formulation allows ProtGPT2 to learn complex statistical dependencies — such as conserved motifs and structural sub-patterns — directly from sequence data.
 
