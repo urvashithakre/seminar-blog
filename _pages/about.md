@@ -53,7 +53,7 @@ The rise of Transformer architectures introduced a shift toward unsupervised lea
 | **ProtTrans** | BERT & T5 mix | Multi-task protein NLP       |
 | **ESM**       | Transformer   | Large-scale protein modeling |
 
-<div style="text-align: center;"><strong>Table 1. </strong> Overview of unsupervised language models applied to protein sequences.</div>
+<div style="text-align: center;"><strong>Table 1.</strong> Overview of unsupervised language models applied to protein sequences.</div>
 <br> 
 Typically, masked language modelling was used to train these models, in which specific tokens are concealed and the model is trained to reconstruct them. They were not optimised for generation, but they worked well for embedding sequences.
 
@@ -105,7 +105,7 @@ ProtGPT2 was trained on UniRef50 (version 2021_04) — a clustered subset of Uni
 | Training Set | \~44.9 million      |
 | Validation   | \~4.9 million (10%) |
 
-<div style="text-align: center;"><strong>Table 2. </strong> Composition of the UniRef50 dataset used to train ProtGPT2.</div>
+<div style="text-align: center;"><strong>Table 2.</strong> Composition of the UniRef50 dataset used to train ProtGPT2.</div>
 <br>
 This dataset spans both known and “dark” proteome regions — proteins without known structure or function, enabling ProtGPT2 to generalize across structured and unexplored sequence space.
 
@@ -135,7 +135,7 @@ This strategy reduces sequence length, improves generalization and helps the mod
 Unlike masked models focused on classification or embedding, ProtGPT2 was explicitly trained for sequence generation, enabling it to compose entirely new proteins that closely resemble natural ones. To summarize, ProtGPT2 combines a powerful GPT-2 architecture with a massive protein sequence corpus (UniRef50) and a subword-aware BPE tokenizer. These elements work together to give the model the ability to understand the underlying "language" of proteins and produce new sequences that accurately represent their structural and functional characteristics.
 
 ![](images/ProtGPT_Architecture.png)
-<div style="text-align: center;">Figure 2: ProtGPT2 Architecture </div>
+<div style="text-align: center;"><b>Figure 2.</b> ProtGPT2 Architecture </div>
 
 ## 5. Decoding Strategies: How ProtGPT2 Generates Sequences?
 Once ProtGPT2 is trained to model the protein language, the next step is generating new sequences. But how exactly are these sequences "sampled" from the model?
@@ -151,12 +151,13 @@ Here are the primary decoding strategies explored:
 | **Beam Search**    | Maintains multiple candidate sequences and picks the best-scoring one | Slightly better but still repetitive |
 | **Random (Top-k)** | Samples from top-k probable tokens randomly                           | Diverse and biologically realistic   |
 
-<div style="text-align: center;">Table 4. Comparison of Greedy, Beam, and Top‑k sampling strategies</div>
+<div style="text-align: center;"><b>Table 4.</b> Comparison of Greedy, Beam, and Top‑k sampling strategies</div>
 <br>
 Here's a visual representation of how these 3 strategies work:
 
 <center>
   <img src="images/Sampling_Strategies.png" alt="Figure 3. Sampling Strategies" width="80%">
+  <div style="text-align: center;"><b>Figure 3.</b> Comparison of Greedy, Beam, and Top‑k sampling strategies</div>
 </center>
 
 ### 5.2 Which Strategy Works Best?
@@ -192,7 +193,7 @@ Using IUPred3 — a tool that predicts whether a protein region is ordered or di
 | **Globular domains (IUPred3)** | 88.40%           | 87.59%             |
 | **Ordered amino acids**        | 82.59%           | 79.71%             |
 
-<div style="text-align: center;"><strong>Table 5.</strong>Comparison of Structural Order Between Natural and ProtGPT2-Generated Proteins </div>
+<div style="text-align: center;"><strong>Table 5.</strong> Comparison of Structural Order Between Natural and ProtGPT2-Generated Proteins </div>
 
 These outcomes are remarkably similar. Even without explicit structural constraints or supervision, ProtGPT2 sequences replicate the order and globularity of real-world proteins despite being created from scratch.
 
@@ -217,7 +218,7 @@ They performed a comparison using three datasets:
 Each sequence was searched against the Uniclust30 database to find the best-matching natural counterpart. 
 
 ![](images/Sequence_Identities.jpg)
-<div style="text-align: center;"><strong>Figure 6.</strong>Pairwise sequence identities vs. alignment length for each of the datasets </div>
+<div style="text-align: center;"><strong>Figure 6.</strong> Pairwise sequence identities vs. alignment length for each of the datasets </div>
 
 
 **Takeaways from the Plot**
@@ -252,7 +253,7 @@ Remarkably:
 This means ProtGPT2 is not simply generating arbitrary strings—it’s producing sequences that AlphaFold believes can fold into well-structured proteins.
 
 ![](images/Rosetta vs MD.jpg)
-<div style="text-align: center;"><strong>Figure 7.</strong><b>a.</b> Average Rosetta energy units per residue for the three datasets. <b>b.</b> Root mean square deviation (RMSD) distribution for each MD dataset as computed by averaging RMSDs independently for each trajectory, represented as a boxplot. </div>
+<div style="text-align: center;"><strong>Figure 7.</strong><b> a.</b> Average Rosetta energy units per residue for the three datasets. <b>b.</b> Root mean square deviation (RMSD) distribution for each MD dataset as computed by averaging RMSDs independently for each trajectory, represented as a boxplot. </div>
 
 To further confirm stability, the Rosetta Relax protocol was applied, simulating how these proteins would minimize energy to find their most stable forms. As seen in Figure 3a, both ProtGPT2 and natural sequences showed favorable energy scores (−1.90 and −1.73 REU/residue, respectively), while random sequences were significantly less stable (0.13 REU/residue). This underscores that ProtGPT2’s proteins are thermodynamically plausible.
 
@@ -288,7 +289,7 @@ ProtGPT2 doesn’t just replicate known structures — it expands the protein un
 Another striking feature of ProtGPT2 is its ability to retain functional relevance. To evaluate this, researchers used FoldSeek to superimpose two ProtGPT2-generated sequences with their closest structural homologs from the PDB (Protein Data Bank). Their goal was to check if key ligand-binding residues were preserved — a critical feature for biological function.
 
 ![](<images/Binding_Site.jpg>)
-<div style="text-align: center;">Figure 9. Predicted ProtGPT2 structures (left) aligned with natural proteins (right). Ligand-binding residues are shown in stick representation. Matching residues highlight functional conservation.</div>
+<div style="text-align: center;"><b>Figure 9.</b> Predicted ProtGPT2 structures (left) aligned with natural proteins (right). Ligand-binding residues are shown in stick representation. Matching residues highlight functional conservation.</div>
 
 **Observation**
 - Sequence 357 matched a blue-light sensor (1X0P_A), preserving 3 binding residues exactly and 2 with chemically similar substitutions.
