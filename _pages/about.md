@@ -122,6 +122,7 @@ This strategy reduces sequence length, improves generalization and helps the mod
 | Batch Size   | 65,536 tokens per batch           |
 | Optimizer    | Adam (β₁ = 0.9, β₂ = 0.999)       |
 | Hardware     | 128 NVIDIA A100 GPUs for 4 days   |
+<div style="text-align: center;">Model configuration</div>
 
 Unlike masked models focused on classification or embedding, ProtGPT2 was explicitly trained for sequence generation, enabling it to compose entirely new proteins that closely resemble natural ones. To summarize, ProtGPT2 combines a powerful GPT-2 architecture with a massive protein sequence corpus (UniRef50) and a subword-aware BPE tokenizer. Together, these components enable the model to learn the underlying "language" of proteins and generate new sequences that reflect natural structural and functional properties.
 
@@ -133,19 +134,33 @@ Once ProtGPT2 is trained to model the protein language, the next step is generat
 
 Once we’ve trained our model, we need to decide how to generate sequences from it. The model gives us a probability distribution over possible amino acids at each step, but how we sample from that distribution dramatically affects the quality of the output.
 
+### 5.1 Sampling Strategies Compared
+Here are the primary decoding strategies explored:
+
 | Strategy           | Description                                                           | Outcome                              |
 |--------------------|-----------------------------------------------------------------------|--------------------------------------|
 | **Greedy**         | Always selects the most probable amino acid at each step              | Repetitive, low-diversity sequences  |
 | **Beam Search**    | Maintains multiple candidate sequences and picks the best-scoring one | Slightly better but still repetitive |
 | **Random (Top-k)** | Samples from top-k probable tokens randomly                           | Diverse and biologically realistic   |
 
+<div style="text-align: center;">Comparison of Greedy, Beam, and Top‑k sampling strategies</div>
+
+
+Here's a visual representation of how these 3 strategies work.
+
 <center>
-  <img src="images/Sampling_Strategies.png" alt="Sampling Strategies" width="60%">
+  <img src="images/Sampling_Strategies.png" alt="Sampling Strategies" width="80%">
 </center>
 
-### Best Strategy?
-The authors found that Top-k sampling (k = 950) combined with a repetition penalty of 1.2 yields the best results.
-This approach balances diversity and realism, producing amino acid propensities close to those found in natural proteins.
+### 5.2 Which Strategy Works Best?
+The authors found that Top-k sampling (k = 950) combined with a repetition penalty of 1.2 yielded the most realistic and diverse protein sequences.
+
+This approach strikes a balance between:
+- Structure: preserving plausible secondary and tertiary motifs
+- Diversity: enabling the generation of novel and unique sequences
+
+In contrast, Greedy and Beam Search decoding produced highly repetitive outputs—undesirable for protein design, where structural and functional variety is key.
+
 Here’s a visual representation of how decoding strategies affect output:
 
 ![](images/Sampling Output.jpg)
