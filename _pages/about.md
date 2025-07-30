@@ -77,10 +77,10 @@ $$
 $$
 
 Where:
-- \( w_{k,i} \): *i*-th amino acid in the *k*-th protein sequence  
-- \( D \): protein dataset (UniRef50)  
-- \( \theta \): model parameters  
-- \( \mathcal{L}_{\text{CLM}} \): Causal Language Modeling loss
+- $$w_{k,i}$$: *i*-th amino acid in the *k*-th protein sequence  
+- $$D$$: protein dataset (UniRef50)  
+- $$\theta$$: model parameters  
+- $$\mathcal{L}_{\text{CLM}}$$: Causal Language Modeling loss
 
 This formulation allows ProtGPT2 to learn complex statistical dependencies — such as conserved motifs and structural sub-patterns — directly from sequence data.
 
