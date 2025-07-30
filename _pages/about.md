@@ -14,21 +14,21 @@ p {
 ## 1. Introduction
  Proteins are essential molecules responsible for virtually all functions in living organisms. Designing new proteins could lead to breakthroughs in drug development, material science, and synthetic biology. However, this process is traditionally slow, resource-intensive, and highly specialized.
 
-Recent progress in Transformer-based architectures has enabled the implementation of language models capable of generating text with human-like capabilities. Motivated by this success, researchers developed ProtGPT2, a language model trained on the protein space that generates de novo protein sequences following the principles of natural ones.
+Recent progress in Transformer-based architectures has enabled the implementation of language models capable of generating text with human-like capabilities. Motivated by this success, researchers created ProtGPT2, a language model that was trained on the protein space and produces de novo protein sequences based on natural ones.
 
-In this blog, we’ll explore how researchers are rethinking protein design using tools from an entirely different domain — natural language processing. We’ll look at how a language model was trained to generate protein sequences, how well those sequences mimic natural proteins and what this could mean for the future of biology.
+In this blog, we will explore how researchers are rethinking protein design using tools from an entirely different domain — natural language processing. We’ll look at how a language model was trained to generate protein sequences, how well those sequences mimic natural proteins and what this could mean for the future of biology.
 
 Whether you’re coming from biology, computer science, or just curious about AI, this post will walk you through the fascinating crossroad where deep learning meets molecular design.
 
 ## 2. From Language to Biology: A Shared Structure
-Recent breakthroughs in Natural Language Processing (NLP) have demonstrated that large language models (LLMs) can effectively learn the structure, meaning, and composition of human language. These models are trained on vast amounts of text, enabling them to generate coherent paragraphs, translate across languages, and even write poetry.
+Recent breakthroughs in Natural Language Processing (NLP) have demonstrated that large language models (LLMs) can effectively learn the structure, meaning, and composition of human language. These models are trained on vast amounts of text, enabling them to generate coherent paragraphs, translate across languages and even write poetry.
 
-Interestingly, proteins share a surprisingly similar structure to natural language. Proteins are linear chains of amino acids drawn from a 20-character chemical alphabet. Protein sequences, like natural languages, are information-complete: they store structure and function entirely in their amino acid order with extreme efficiency. Just like words form sentences with grammar, amino acids form structured domains that fold into functional proteins. This analogy has led to the idea of treating protein sequences as a form of language — one where sequence dictates both structure and function.
+Interestingly, proteins share a surprisingly similar structure to natural language. Proteins are linear chains of amino acids drawn from a 20-character chemical alphabet. Like natural languages, protein sequences are information-complete, storing structure and functioning completely in the order of their amino acids with remarkable efficiency. Amino acids form structured domains that fold into functional proteins, much like words use grammar to form sentences. As a result of this analogy, protein sequences are now thought of as a type of language in which structure and function are determined by sequence.
 
 ## 3. Previous Work
 Before ProtGPT2, several models laid the groundwork for applying NLP techniques to biological sequences. These studies demonstrated that proteins when treated like language can be analyzed and even generated using the same tools that revolutionized text processing.
 
-Protein language modeling has evolved through three key stages: supervised learning, unsupervised learning, and autoregressive generation. Each of these contributed unique insights into how AI can understand and create biologically relevant sequences.
+The three main phases of protein language modelling are: supervised learning, unsupervised learning, and autoregressive generation. Each of these contributed unique insights into how AI can understand and create biologically relevant sequences.
 
 ### 3.1 Supervised Models
 Many earlier models were trained on labeled data, focusing on specific prediction tasks such as:
@@ -48,8 +48,7 @@ The rise of Transformer architectures introduced a shift toward unsupervised lea
 | **ProtTrans** | BERT & T5 mix | Multi-task protein NLP       |
 | **ESM**       | Transformer   | Large-scale protein modeling |
 
-
-These models were typically trained using masked language modeling, where certain tokens are hidden and the model learns to reconstruct them. While effective for embedding sequences, they were not optimized for generation.
+Typically, masked language modelling was used to train these models, in which specific tokens are concealed and the model is trained to reconstruct them. They were not optimised for generation, but they worked well for embedding sequences.
 
 ### 3.3 Autoregressive Models for Protein Generation
 To move from understanding to generation, researchers turned to autoregressive models - a class of models that predict each token based on the sequence of previous tokens. This is the core mechanism behind models like GPT.
@@ -60,15 +59,14 @@ Key autoregressive protein models prior to ProtGPT2 include:
 - RITA: A family of generative Transformer models
 - DARK: Focused on de novo protein generation
 
-These models laid the groundwork for ProtGPT2, pushing the field from static understanding toward dynamic, generative modeling of protein space.
+The foundation for ProtGPT2 was established by these models, which advanced the field from static knowledge to dynamic, generative modelling of protein space.
 
 ## 4. From Foundations to Frontier: Meet ProtGPT2
 The journey from treating protein sequences as linguistic constructs to generating new, functional proteins culminates in ProtGPT2—a large-scale autoregressive language model tailored specifically for protein design. While previous models focused on embeddings or prediction, ProtGPT2 was explicitly trained to generate realistic, diverse, and foldable protein sequences. It does so by learning the grammar and structure of proteins much like GPT-2 learns human language.
 
 Let's dive deeper into how ProtGPT2 was built—from its architecture to its training dataset and tokenization strategy.
 ### 4.1 Model Architecture
-
-Building on recent advances in language modeling, ProtGPT2 represents a powerful leap in applying deep learning to protein design. ProtGPT2 is an autoregressive Transformer model with 738 million parameters, based on the GPT-2 architecture. That means it generates outputs sequentially, one token at a time, conditioned only on what came before - perfect for modeling protein sequences. 
+ProtGPT2 is a big step forward in using deep learning to design proteins, building on recent progress in language modelling. Based on the GPT-2 architecture, ProtGPT2 is an autoregressive Transformer model with 738 million parameters. That means it generates outputs sequentially, one token at a time, conditioned only on what came before - perfect for modeling protein sequences. 
 
 Formally, given a protein sequence: 
 $$ W = \{ w_1, w_2, \dots, w_n \} $$
@@ -103,7 +101,7 @@ ProtGPT2 was trained on UniRef50 (version 2021_04) — a clustered subset of Uni
 This dataset spans both known and “dark” proteome regions — proteins without known structure or function, enabling ProtGPT2 to generalize across structured and unexplored sequence space.
 
 ### 4.3 Byte Pair Encoding (BPE) for Tokenization
-Unlike traditional models that treat each amino acid as a separate token, ProtGPT2 uses a Byte Pair Encoding (BPE) tokenizer. This allows the model to learn frequent motifs and sub-sequences and compress them into higher-level tokens. ProtGPT2’s tokenizer was trained on the Swiss-Prot subset, a high-quality, manually curated collection from UniProt. This ensures robust vocabulary learning while minimizing noise from low-confidence sequences.
+ProtGPT2 employs a Byte Pair Encoding (BPE) tokeniser, in contrast to conventional models that handle each amino acid as a distinct token. This enables the model to compress frequently occurring motifs and sub-sequences into higher-level tokens. ProtGPT2’s tokenizer was trained on the Swiss-Prot subset, a high-quality, manually curated collection from UniProt. This ensures robust vocabulary learning while minimizing noise from low-confidence sequences.
 
 Here’s a quick breakdown of the tokenizer setup:
 - Vocabulary size: 50,256 tokens
@@ -125,7 +123,7 @@ This strategy reduces sequence length, improves generalization and helps the mod
 
 <div style="text-align: center;">Model configuration</div>
 
-Unlike masked models focused on classification or embedding, ProtGPT2 was explicitly trained for sequence generation, enabling it to compose entirely new proteins that closely resemble natural ones. To summarize, ProtGPT2 combines a powerful GPT-2 architecture with a massive protein sequence corpus (UniRef50) and a subword-aware BPE tokenizer. Together, these components enable the model to learn the underlying "language" of proteins and generate new sequences that reflect natural structural and functional properties.
+Unlike masked models focused on classification or embedding, ProtGPT2 was explicitly trained for sequence generation, enabling it to compose entirely new proteins that closely resemble natural ones. To summarize, ProtGPT2 combines a powerful GPT-2 architecture with a massive protein sequence corpus (UniRef50) and a subword-aware BPE tokenizer. These elements work together to give the model the ability to understand the underlying "language" of proteins and produce new sequences that accurately represent their structural and functional characteristics.
 
 ![Fig. 1: ProtGPT2 Architecture](images/ProtGPT_Architecture.png)
 <div style="text-align: center;">Figure 1: ProtGPT2 Architecture </div>
@@ -133,7 +131,7 @@ Unlike masked models focused on classification or embedding, ProtGPT2 was explic
 ## 5. Decoding Strategies: How ProtGPT2 Generates Sequences?
 Once ProtGPT2 is trained to model the protein language, the next step is generating new sequences. But how exactly are these sequences "sampled" from the model?
 
-Once we’ve trained our model, we need to decide how to generate sequences from it. The model gives us a probability distribution over possible amino acids at each step, but how we sample from that distribution dramatically affects the quality of the output.
+After our model has been trained, we must choose how to use it to produce sequences. The quality of the output is significantly impacted by how we sample from the probability distribution over potential amino acids that the model provides at each step.
 
 ### 5.1 Sampling Strategies Compared
 Here are the primary decoding strategies explored:
@@ -159,7 +157,7 @@ This approach strikes a balance between:
 - Structure: preserving plausible secondary and tertiary motifs
 - Diversity: enabling the generation of novel and unique sequences
 
-In contrast, Greedy and Beam Search decoding produced highly repetitive outputs—undesirable for protein design, where structural and functional variety is key.
+In contrast, Greedy and Beam Search decoding produced highly repetitive outputs which is undesirable for protein design, where structural and functional variety is important.
 
 Here’s a visual representation of how decoding strategies affect output:
 
@@ -168,10 +166,9 @@ Here’s a visual representation of how decoding strategies affect output:
 
 
 ## 6. Evaluating the Biological Plausibility of ProtGPT2 Sequences
-After training, it’s critical to assess whether ProtGPT2 actually generates plausible, stable, and structured proteins—not just random chains of amino acids.
+After training, it’s critical to assess whether ProtGPT2 actually generates plausible, stable and structured proteins - not just random chains of amino acids.
 
 To this end, researchers evaluated ProtGPT2 outputs across three biological axes:
-
 1. Globularity & Order
 2. Secondary Structure Composition
 3. Similarity to Natural Proteins
@@ -179,7 +176,7 @@ To this end, researchers evaluated ProtGPT2 outputs across three biological axes
 ### 6.1 Globularity & Disorder
 Proteins come in various structural forms — some are flexible and disordered, others fold tightly into compact, globular forms. Globular proteins are the workhorses of biology, typically performing essential functions within cells. To assess ProtGPT2’s biological realism, the authors examined whether its generated sequences resemble globular proteins, much like natural ones.
 
-🔍 Using IUPred3 — a tool that predicts whether a protein region is ordered or disordered — they analyzed 10,000 ProtGPT2-generated sequences and compared them with 10,000 natural proteins.
+Using IUPred3 — a tool that predicts whether a protein region is ordered or disordered — they analyzed 10,000 ProtGPT2-generated sequences and compared them with 10,000 natural proteins.
 
 | Property                       | Natural Proteins | ProtGPT2 Sequences |
 | ------------------------------ | ---------------- | ------------------ |
@@ -194,8 +191,7 @@ Protein function heavily depends on secondary structure elements like alpha-heli
 ![](images/Secondary_Structure_Comparison.png)
 <div style="text-align: center;">Figure 3: Secondary structure comparison </div>
 
-Again, the similarities are remarkable — ProtGPT2 is not only generating coherent protein sequences but ones with realistic structural patterns.
-Takeaway: Even without explicitly being trained on structure, ProtGPT2 captures the patterns that govern natural protein folding. That’s the power of deep learning on biological language.
+Again, the similarities are remarkable — ProtGPT2 is not only generating coherent protein sequences but ones with realistic structural patterns. Even without explicitly being trained on structure, ProtGPT2 captures the patterns that govern natural protein folding. That’s the power of deep learning on biological language.
 
 ### 6.3 Sequence Similarity & Novelty
 One might wonder: are these sequences just copying known proteins, or are they genuinely novel? To answer this, the researchers turned to HHblits, a tool for detecting remote protein homology using profile hidden Markov models. In bioinformatics, two sequences are considered evolutionarily related (homologous) if they are similar above a certain threshold.Th e HSSP curve defines this threshold: it sets the minimum percent identity required, depending on the length of the alignment.
@@ -230,54 +226,64 @@ Bottom Line: ProtGPT2 sequences are “similar but novel.” They are grounded i
 
 ## 7. Structural and Functional Validation of ProtGPT2 Sequences
 
-Designing new proteins isn’t just about stringing amino acids together—it’s about ensuring those sequences fold into stable, functional structures. A crucial part of evaluating ProtGPT2’s performance involves assessing whether the sequences it generates resemble natural proteins not only in composition but also in their three-dimensional structure and stability.
+Designing new proteins isn’t just about stitching  amino acids together -it’s about ensuring those sequences fold into stable, functional structures. A crucial part of evaluating ProtGPT2’s performance involves assessing whether the sequences it generates resemble natural proteins not only in composition but also in their three-dimensional structure and stability.
+
+This section explores how well ProtGPT2 performs in structure prediction, folding stability, flexibility, and function retention — all essential for biologically viable proteins.
 
 ### 7.1 Folding Stability: Insights from AlphaFold and Rosetta
-To understand how well ProtGPT2’s sequences fold, researchers used AlphaFold, a state-of-the-art structure prediction tool. The key metric here is pLDDT—a confidence score where higher values indicate more reliable and ordered structures. Remarkably:
+To understand how well ProtGPT2’s sequences fold, researchers used AlphaFold, a state-of-the-art structure prediction tool. The key metric here is pLDDT—a confidence score where higher values indicate more reliable and ordered structures. 
 
-- Natural proteins showed high structural confidence, with a mean pLDDT of 75.3, and 66% of sequences scoring above the 70 threshold.
-- ProtGPT2-generated sequences followed closely behind, achieving a mean of 63.2 for their best predicted structures and 37% above the pLDDT 70 threshold.
-- Random sequences, by contrast, had poor folding performance, averaging a pLDDT of only 44, with just 7.4% scoring above 70.
+Remarkably:
+-**Natural proteins** showed high structural confidence, with a mean pLDDT of 75.3, and 66% of sequences scoring above the 70 threshold.
+- **ProtGPT2 sequences** followed closely behind, achieving a mean of 63.2 for their best predicted structures and 37% above the pLDDT 70 threshold.
+- **Random sequences**, by contrast, had poor folding performance, averaging a pLDDT of only 44, with just 7.4% scoring above 70.
 
 This means ProtGPT2 is not simply generating arbitrary strings—it’s producing sequences that AlphaFold believes can fold into well-structured proteins.
 
 ![](images/Rosetta vs MD.jpg)
-<div style="text-align: center;">Figure 4: **a** Average Rosetta energy units per residue for the three datasets. **b** Root mean square deviation (RMSD) distribution for each MD dataset as computed by averaging RMSDs independently for each trajectory, represented as a boxplot.  </div>
+<div style="text-align: center;">Figure 4: a. Average Rosetta energy units per residue for the three datasets. b. Root mean square deviation (RMSD) distribution for each MD dataset as computed by averaging RMSDs independently for each trajectory, represented as a boxplot.  </div>
 
 To further confirm stability, the Rosetta Relax protocol was applied, simulating how these proteins would minimize energy to find their most stable forms. As seen in Figure 3a, both ProtGPT2 and natural sequences showed favorable energy scores (−1.90 and −1.73 REU/residue, respectively), while random sequences were significantly less stable (0.13 REU/residue). This underscores that ProtGPT2’s proteins are thermodynamically plausible.
 
 ### 7.2  Structural Flexibility: Are ProtGPT2 Proteins Dynamic?
-Proteins in nature are not rigid—they flex and shift to carry out their functions. To examine whether ProtGPT2 sequences mimic this natural behavior, researchers performed molecular dynamics simulations.
+Proteins in nature are not rigid—they flex and shift to carry out their functions. To examine whether ProtGPT2 sequences mimic this natural behavior, researchers performed molecular dynamics simulations, measuring RMSD (root mean square deviation) to capture structural fluctuations.
 
-As shown in Figure 3b, the RMSD (root mean square deviation), which captures how much a protein fluctuates during simulation, was nearly the same for natural (2.93 Å) and ProtGPT2 (3.12 Å) sequences—both much lower than the RMSD of random sequences (9.41 Å). These results suggest that ProtGPT2’s sequences not only fold well but also move like real proteins, a key trait for functionality.
+As shown in Figure 3b, the RMSD (root mean square deviation), which captures how much a protein fluctuates during simulation, was nearly the same for natural (2.93 Å) and ProtGPT2 (3.12 Å) sequences—both much lower than the RMSD of random sequences (9.41 Å). 
+
+These results suggest that ProtGPT2’s sequences not only fold well but also move like real proteins, a key trait for functionality.
 
 ## 8. Exploring the Uncharted Protein Space
+While many models attempt to mimic known protein structures, one of ProtGPT2’s most exciting capabilities lies in its potential to go beyond — to generate proteins that reside in previously uncharted regions of the protein landscape. This section explores how ProtGPT2 pushes the boundaries of structural biology through novel folds and preserved function.
 
 ### 8.1 Network Embedding of Protein Space
 
-One of ProtGPT2's most remarkable capabilities is its potential to explore previously uncharted regions of protein space. Using a network-based structural space representation, researchers connected sequences from both SCOPe 2.07 and ProtGPT2 datasets based on alignment similarity.
+To understand how novel the generated proteins really are, researchers visualized the structural space occupied by ProtGPT2-generated sequences. Using a network-based representation, they connected sequences from two datasets:
+- SCOPe 2.07 (manually curated structural database)
+- ProtGPT2 outputs (generated de novo)
 
+Edges in the network were formed based on alignment similarity, allowing visualization of how closely or distantly ProtGPT2 sequences relate to known protein folds.
 ![](<images/Protein_Space.jpg>)
 <div style="text-align: center;">Network of structural relationships between ProtGPT2-generated and natural proteins. Each dot represents a protein. White nodes are ProtGPT2 sequences connected to known structural classes. </div>
 
 Key highlights:
-- The combined network had 59,612 nodes and over 427,000 edges, showing widespread coverage.
+- The combined network had 59,612 nodes and over 427,000 edges.
 - Over 50% of nodes clustered in one large component — with ProtGPT2 sequences often acting as bridges between disconnected islands in the structural landscape.
-- Six diverse proteins were selected to visualize ProtGPT2’s reach into multiple SCOP classes: all-α, all-β, α/β, α+β, membrane proteins, and small proteins.
+- Six diverse proteins were selected to visualize ProtGPT2’s reach into multiple SCOP classes: all-α, all-β, α/β, α+β, membrane proteins and small proteins.
 
-This analysis shows that ProtGPT2 doesn’t just mimic known proteins — it connects disparate structural regions, suggesting it can generate proteins with novel folds and evolutionarily unexplored functions.
+ProtGPT2 doesn’t just replicate known structures — it expands the protein universe by generating sequences that connect distant regions, indicating potential for novel structural and functional exploration.
 
 ## 8.2 Preserving Function: Binding Site Conservation
 
-Another striking feature of ProtGPT2 is its ability to retain functional relevance. Two generated sequences were superimposed with their closest structural matches from the PDB database using FoldSeek. The goal? To see if key ligand-binding residues were preserved.
+Another striking feature of ProtGPT2 is its ability to retain functional relevance. To evaluate this, researchers used FoldSeek to superimpose two ProtGPT2-generated sequences with their closest structural homologs from the PDB (Protein Data Bank). Their goal was to check if key ligand-binding residues were preserved — a critical feature for biological function.
 
 ![](<images/Binding_Site.jpg>)
 <div style="text-align: center;">Predicted ProtGPT2 structures (left) aligned with natural proteins (right). Ligand-binding residues are shown in stick representation. Matching residues highlight functional conservation.</div>
 
+**Observation**
 - Sequence 357 matched a blue-light sensor (1X0P_A), preserving 3 binding residues exactly and 2 with chemically similar substitutions.
 - Sequence 475 mimicked a phosphodiesterase (5M1T_A), retaining 3 of 5 binding residues with minimal deviations.
 
-Despite having low sequence identity (~30%), ProtGPT2 zero-shot generated sequences that maintain key interaction hotspots, showing strong potential for functional protein design without explicit training on specific functions.
+Despite a low global sequence identity (~30%), ProtGPT2 zero-shot generated sequences that preserved critical interaction hotspots, suggesting strong potential for functional protein design — even without task-specific supervision.
 
 ## 9. Critical Perspective and Insights
 The ProtGPT2 study represents a bold stride in harnessing the generative capabilities of large language models for de novo protein design. By adapting a GPT2-like architecture to the protein sequence domain and rigorously validating its outputs across structural, functional, and dynamic benchmarks, the authors make a compelling case for the use of LLMs beyond natural language. However, while the findings are promising, it is crucial to examine the broader implications, technical limitations, and future directions for improvement.
