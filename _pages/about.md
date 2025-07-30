@@ -26,7 +26,9 @@ Recent breakthroughs in Natural Language Processing (NLP) have demonstrated that
 Interestingly, proteins share a surprisingly similar structure to natural language. Proteins are linear chains of amino acids drawn from a 20-character chemical alphabet. Protein sequences, like natural languages, are information-complete: they store structure and function entirely in their amino acid order with extreme efficiency. Just like words form sentences with grammar, amino acids form structured domains that fold into functional proteins. This analogy has led to the idea of treating protein sequences as a form of language — one where sequence dictates both structure and function.
 
 ## 3. Previous Work
-Before ProtGPT2, several models laid the groundwork for applying NLP techniques to biological sequences. These efforts demonstrated that protein sequences could be understood and analyzed through the lens of language modeling — both in supervised and unsupervised settings.
+Before ProtGPT2, several models laid the groundwork for applying NLP techniques to biological sequences. These studies demonstrated that proteins when treated like language can be analyzed and even generated using the same tools that revolutionized text processing.
+
+Protein language modeling has evolved through three key stages: supervised learning, unsupervised learning, and autoregressive generation. Each of these contributed unique insights into how AI can understand and create biologically relevant sequences.
 
 ### 3.1 Supervised Models
 Many earlier models were trained on labeled data, focusing on specific prediction tasks such as:
@@ -34,7 +36,7 @@ Many earlier models were trained on labeled data, focusing on specific predictio
 - Stability assessment
 - Homology detection
 
-Platforms like BioSeq-BLM collected numerous supervised language models designed for biomolecular tasks. However, supervised learning has limitations: it requires curated datasets and is narrowly focused on predefined tasks.
+Platforms like BioSeq-BLM collected numerous supervised language models designed for biomolecular tasks. However, supervised learning has limitations: it requires curated datasets and is narrowly focused on predefined task, offering little flexibility for generative tasks.
 
 ### 3.2 Unsupervised Models
 The rise of Transformer architectures introduced a shift toward unsupervised learning, where models learn from raw sequences without labels. Notable models include:
@@ -50,7 +52,7 @@ The rise of Transformer architectures introduced a shift toward unsupervised lea
 These models were typically trained using masked language modeling, where certain tokens are hidden and the model learns to reconstruct them. While effective for embedding sequences, they were not optimized for generation.
 
 ### 3.3 Autoregressive Models for Protein Generation
-Autoregressive models — like GPT — predict the next token based on previous ones. They are naturally suited for generation tasks.
+To move from understanding to generation, researchers turned to autoregressive models - a class of models that predict each token based on the sequence of previous tokens. This is the core mechanism behind models like GPT.
 
 Key autoregressive protein models prior to ProtGPT2 include:
 
@@ -58,14 +60,20 @@ Key autoregressive protein models prior to ProtGPT2 include:
 - RITA: A family of generative Transformer models
 - DARK: Focused on de novo protein generation
 
-## 4. From Foundations to Frontier: Meet ProtGPT2
+These models laid the groundwork for ProtGPT2, pushing the field from static understanding toward dynamic, generative modeling of protein space.
 
+## 4. From Foundations to Frontier: Meet ProtGPT2
+The journey from treating protein sequences as linguistic constructs to generating new, functional proteins culminates in ProtGPT2—a large-scale autoregressive language model tailored specifically for protein design. While previous models focused on embeddings or prediction, ProtGPT2 was explicitly trained to generate realistic, diverse, and foldable protein sequences. It does so by learning the grammar and structure of proteins much like GPT-2 learns human language.
+
+Let's dive deeper into how ProtGPT2 was built—from its architecture to its training dataset and tokenization strategy.
 ### 4.1 Model Architecture
 
 Building on recent advances in language modeling, ProtGPT2 represents a powerful leap in applying deep learning to protein design. ProtGPT2 is an autoregressive Transformer model with 738 million parameters, based on the GPT-2 architecture. That means it generates outputs sequentially, one token at a time, conditioned only on what came before - perfect for modeling protein sequences. 
 
-Given a protein sequence, $$ W = \{ w_1, w_2, \dots, w_n \} $$, the model learns to predict the probability of each amino acid conditioned on its preceding tokens:
+Formally, given a protein sequence: 
+$$ W = \{ w_1, w_2, \dots, w_n \} $$
 
+the model learns to predict the probability of the sequence as:
 $$
 p(\mathcal{W}) = \prod_{i=1}^{n} p(w_i \mid w_{<i})
 $$
@@ -82,26 +90,27 @@ Where:
 - $$\theta$$: Model parameters  
 - $$\mathcal{L}_{\text{CLM}}$$: Causal Language Modeling loss
 
-This formulation allows ProtGPT2 to learn complex statistical dependencies — such as conserved motifs and structural sub-patterns — directly from sequence data.
+This architecture enables the model to learn complex statistical dependencies — such as conserved motifs and structural sub-patterns — directly from sequence data.
 
 ### 4.2 The Dataset
-ProtGPT2 was trained on UniRef50 (version 2021_04) — a clustered version of UniProt with 50% sequence identity, which ensures a balance between diversity and redundancy reduction.
+ProtGPT2 was trained on UniRef50 (version 2021_04) — a clustered subset of UniProt that reduces redundancy by grouping sequences with >50% identity. This ensures both diversity and robustness during training.
 
 | Subset       | Sequences           |
 | ------------ | ------------------- |
 | Training Set | \~44.9 million      |
 | Validation   | \~4.9 million (10%) |
 
-This dataset spans both known and “dark” proteome regions — sequences with no known structure or function — enabling the model to generalize across a vast protein landscape.
+This dataset spans both known and “dark” proteome regions — proteins without known structure or function, enabling ProtGPT2 to generalize across structured and unexplored sequence space.
 
 ### 4.3 Byte Pair Encoding (BPE) for Tokenization
-Rather than treating each amino acid as a separate token, ProtGPT2 uses a Byte Pair Encoding (BPE) tokenizer — a subword algorithm that learns common amino acid motifs and folds them into reusable building blocks.
+Unlike traditional models that treat each amino acid as a separate token, ProtGPT2 uses a Byte Pair Encoding (BPE) tokenizer. This allows the model to learn frequent motifs and sub-sequences and compress them into higher-level tokens. ProtGPT2’s tokenizer was trained on the Swiss-Prot subset, a high-quality, manually curated collection from UniProt. This ensures robust vocabulary learning while minimizing noise from low-confidence sequences.
 
+Here’s a quick breakdown of the tokenizer setup:
 - Vocabulary size: 50,256 tokens
 - Average token: ~4 amino acids
 - Trained on: Swiss-Prot subset for robustness
 
-This strategy reduces sequence length, improves generalization, and helps the model learn biologically meaningful patterns.
+This strategy reduces sequence length, improves generalization and helps the model learn biologically meaningful patterns.
 
 ### 4.4 Final Model Configuration
 

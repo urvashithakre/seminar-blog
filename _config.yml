@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Your Name / Site Title"
+title                    : "ProtGPT2 - A deep unsupervised language model for protein design"
 title_separator          : "-"
 name                     : &name "Urvashi Thakre"
 description              : &description "personal description"
