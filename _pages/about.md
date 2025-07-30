@@ -130,9 +130,8 @@ Once we’ve trained our model, we need to decide how to generate sequences from
 | **Beam Search**    | Maintains multiple candidate sequences and picks the best-scoring one | Slightly better but still repetitive |
 | **Random (Top-k)** | Samples from top-k probable tokens randomly                           | Diverse and biologically realistic   |
 
-#![](images/Sampling_Strategies.png)
 <p align="center">
-  <img src="images/sampling_strategies.png" width="500px">
+  <img src="images/Sampling_Strategies.png" width="500px">
 </p>
 
 ### Best Strategy?
