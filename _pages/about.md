@@ -6,11 +6,6 @@ redirect_from:
   - /about/
   - /about.html
 ---
-<script type="text/javascript"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
-
 <style>
 p {
     text-align: justify;
@@ -71,23 +66,21 @@ Building on recent advances in language modeling, ProtGPT2 represents a powerful
 
 Given a protein sequence, $$ W = \{ w_1, w_2, \dots, w_n \} $$, the model learns to predict the probability of each amino acid conditioned on its preceding tokens:
 
-
 $$
-p(W) = \prod_{i=1}^{n} p(w_i \mid w_{<i})
+p(\mathcal{W}) = \prod_{i=1}^{n} p(w_i \mid w_{<i})
 $$
 
 The training process minimizes the **negative log-likelihood** over all protein sequences in the dataset:
 
 $$
-L_{\text{CLM}} = - \sum_{k=1}^{|D|} \sum_{i=1}^{|w_k|} \log\, p_\theta(w_{k,i} \mid w_{k,<i})
+\mathcal{L}_{\text{CLM}} = - \sum_{k=1}^{|D|} \sum_{i=1}^{|w_k|} \log\, p_\theta(w_{k,i} \mid w_{k,<i})
 $$
 
 Where:
-
-- $$ w_{k,i} \text{ — the } i\text{-th amino acid in the } k\text{-th protein sequence} $$
-- $$ D \text{ — the protein dataset (UniRef50)}$$
-- $$ \theta \text{ — model parameters} $$
-- $$ L_{\text{CLM}} \text{ — Causal Language Modeling loss} $$
+- \( w_{k,i} \): *i*-th amino acid in the *k*-th protein sequence  
+- \( D \): protein dataset (UniRef50)  
+- \( \theta \): model parameters  
+- \( \mathcal{L}_{\text{CLM}} \): Causal Language Modeling loss
 
 This formulation allows ProtGPT2 to learn complex statistical dependencies — such as conserved motifs and structural sub-patterns — directly from sequence data.
 
