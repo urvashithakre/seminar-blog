@@ -80,12 +80,12 @@
    Author profile and links
    ========================================================================== */
 
-.author__avatar {
-  display: table-cell;
-  vertical-align: top;
-  width: 36px;
-  // set width only, for non-square avatars
-  // height: 36px;
+// .author__avatar {
+//   display: table-cell;
+//   vertical-align: top;
+//   width: 36px;
+//   // set width only, for non-square avatars
+//   // height: 36px;
 
   @include breakpoint($large) {
     display: block;
