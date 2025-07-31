@@ -101,7 +101,7 @@ This architecture enables the model to learn complex statistical dependencies â€
 ProtGPT2 was trained on UniRef50 (version 2021_04) â€” a clustered subset of UniProt that reduces redundancy by grouping sequences with >50% identity. This ensures both diversity and robustness during training.
 
 | Subset       | Sequences           |
-|: -----------:| :------------------:|
+|:------------:|:-------------------:|
 | Training Set | \~44.9 million      |
 | Validation   | \~4.9 million (10%) |
 
