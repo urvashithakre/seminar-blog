@@ -189,10 +189,9 @@ Proteins come in various structural forms — some are flexible and disordered, 
 Using IUPred3 — a tool that predicts whether a protein region is ordered or disordered — they analyzed 10,000 ProtGPT2-generated sequences and compared them with 10,000 natural proteins.
 
 | Property                       | Natural Proteins | ProtGPT2 Sequences |
-| ------------------------------ | ---------------- | ------------------ |
-| **Globular domains (IUPred3)** | 88.40%           | 87.59%             |
-| **Ordered amino acids**        | 82.59%           | 79.71%             |
-
+|:------------------------------:|:----------------:|:------------------:|
+| **Globular domains (IUPred3)** |     88.40%       |      87.59%        |
+| **Ordered amino acids**        |     82.59%       |      79.71%        |
 <div style="text-align: center;"><strong>Table 5.</strong> Comparison of Structural Order Between Natural and ProtGPT2-Generated Proteins </div>
 <br>
 These outcomes are remarkably similar. Even without explicit structural constraints or supervision, ProtGPT2 sequences replicate the order and globularity of real-world proteins despite being created from scratch.
