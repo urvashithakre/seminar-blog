@@ -47,7 +47,7 @@ Platforms like BioSeq-BLM collected numerous supervised language models designed
 The rise of Transformer architectures introduced a shift toward unsupervised learning, where models learn from raw sequences without labels. Notable models include:
 
 | Model         | Architecture  | Focus                        |
-| ------------- | ------------- | ---------------------------- |
+| :------------:| :------------:| :--------------------------: |
 | **ProtBERT**  | BERT-style    | Embedding proteins           |
 | **TCR-BERT**  | BERT-style    | T-cell receptor modeling     |
 | **ProtTrans** | BERT & T5 mix | Multi-task protein NLP       |
@@ -101,7 +101,7 @@ This architecture enables the model to learn complex statistical dependencies â€
 ProtGPT2 was trained on UniRef50 (version 2021_04) â€” a clustered subset of UniProt that reduces redundancy by grouping sequences with >50% identity. This ensures both diversity and robustness during training.
 
 | Subset       | Sequences           |
-| ------------ | ------------------- |
+|: -----------:| :------------------:|
 | Training Set | \~44.9 million      |
 | Validation   | \~4.9 million (10%) |
 
@@ -122,7 +122,7 @@ This strategy reduces sequence length, improves generalization and helps the mod
 ### 4.4 Final Model Configuration
 
 | Component    | Description                       |
-|------------- |-----------------------------------|
+|:------------:|:---------------------------------:|
 | Architecture | GPT-2 large (decoder-only)        |
 | Layers       | 36                                |
 | Parameters   | 738 million                       |
@@ -146,7 +146,7 @@ After our model has been trained, we must choose how to use it to produce sequen
 Here are the primary decoding strategies explored:
 
 | Strategy           | Description                                                           | Outcome                              |
-|--------------------|-----------------------------------------------------------------------|--------------------------------------|
+|:------------------:|:---------------------------------------------------------------------:|:--------------------------------------:|
 | **Greedy**         | Always selects the most probable amino acid at each step              | Repetitive, low-diversity sequences  |
 | **Beam Search**    | Maintains multiple candidate sequences and picks the best-scoring one | Slightly better but still repetitive |
 | **Random (Top-k)** | Samples from top-k probable tokens randomly                           | Diverse and biologically realistic   |
