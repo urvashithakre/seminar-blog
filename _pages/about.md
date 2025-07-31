@@ -199,10 +199,13 @@ These outcomes are remarkably similar. Even without explicit structural constrai
 
 ### 6.2 Secondary Structure Composition
 Protein function heavily depends on secondary structure elements like alpha-helices and beta-sheets. So the researchers used PSIPRED, a well-known structure predictor, to further evaluate how ProtGPT2’s sequences stack up. 
- 
-![](images/Secondary_Structure_Comparison.png)
-<div style="text-align: center;"><strong>Figure 5.</strong> Secondary structure comparison </div>
+
+<center>
+  <img src="images/Secondary_Structure_Comparison.png" alt="Figure 1:  Secondary structure comparison" width="70%">
+  <div><strong>Figure 1.</strong> Secondary structure comparison </div>
+</center>
 <br>
+
 Again, the similarities are remarkable — ProtGPT2 is not only generating coherent protein sequences but ones with realistic structural patterns. Even without explicitly being trained on structure, ProtGPT2 captures the patterns that govern natural protein folding. That’s the power of deep learning on biological language.
 
 ### 6.3 Sequence Similarity & Novelty
