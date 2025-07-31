@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Seminar: Deep Learning For The Sciences"
+title                    : "Seminar: Deep Learning for the Sciences"
 title_separator          : "-"
 name                     : &name "Urvashi Thakre"
 description              : &description "personal description"
