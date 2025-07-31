@@ -26,7 +26,7 @@ Recent breakthroughs in Natural Language Processing (NLP) have demonstrated that
 Interestingly, proteins share a surprisingly similar structure to natural language. Proteins are linear chains of amino acids drawn from a 20-character chemical alphabet. Like natural languages, protein sequences are information-complete, storing structure and functioning completely in the order of their amino acids with remarkable efficiency. Amino acids form structured domains that fold into functional proteins, much like words use grammar to form sentences. As a result of this analogy, protein sequences are now thought of as a type of language in which structure and function are determined by sequence.
 
 <center>
-  <img src="images/img1.png" alt="Figure 1:  Structural Analogy Between Protein Sequences and Natural Language" width="70%">
+  <img src="images/img1.png" alt="Figure 1:  Structural Analogy Between Protein Sequences and Natural Language" width="50%">
   <div><strong>Figure 1.</strong> Structural Analogy Between Protein Sequences and Natural Language</div>
 </center>
 
@@ -157,7 +157,7 @@ Here's a visual representation of how these 3 strategies work:
 
 <center>
   <img src="images/Sampling_Strategies.png" alt="Figure 3. Sampling Strategies" width="80%">
-  <div style="text-align: center;"><b>Figure 3.</b> Comparison of Greedy, Beam and Top‑k sampling strategies</div>
+  <div style="text-align: center;"><b>Figure 3.</b> Comparison of Greedy, Beam and Top‑k sampling strategies [3]</div>
 </center>
 
 ### 5.2 Which Strategy Works Best?
@@ -348,10 +348,6 @@ ProtGPT2 is not a replacement for rational design or evolutionary selection. Yet
 ## References
 1. Ferruz, Noelia, Steffen Schmidt, and Birte Höcker. "ProtGPT2 is a deep unsupervised language model for protein design." Nature communications 13.1 (2022): 4348.
 2. Yang, Kevin K., Zachary Wu, and Frances H. Arnold. "Machine-learning-guided directed evolution for protein engineering." Nature methods 16.8 (2019): 687-694.
-
-
-
-
-
+3. DecodingML. 4 Key Decoding Strategies for LLMs. Substack, 2023. https://decodingml.substack.com/p/4-key-decoding-strategies-for-llms
 
 
